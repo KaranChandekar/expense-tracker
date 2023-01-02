@@ -14,11 +14,19 @@ const ExpenseForm = () => {
 
   const titleChangeHandler = (e) => {
     // setEnteredTitle(e.target.value);
-    setUserInput({
-      ...userInput,
-      enteredTitle: e.target.value,
+
+    // Using one state instead multiple states
+    // setUserInput({
+    //   ...userInput,
+    //   enteredTitle: e.target.value,
+    // });
+
+    // Updating state that depends on the previous state
+    setUserInput((prevState) => {
+      return { ...prevState, enteredTitle: e.target.value };
     });
   };
+
   const amountChangeHandler = (e) => {
     // setEnteredAmount(e.target.value);
     setUserInput({
@@ -26,6 +34,7 @@ const ExpenseForm = () => {
       enteredAmount: e.target.value,
     });
   };
+  
   const dateChangeHandler = (e) => {
     // setEnteredDate(e.target.value);
     setUserInput({
